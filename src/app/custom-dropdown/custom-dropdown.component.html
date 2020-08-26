@@ -1,0 +1,79 @@
+<div class="custom-dropdown {{opened ? 'opened' : ''}}">
+    <div class="custom-dropdown-label">
+        {{label}}<mat-icon class="label-icon">{{opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon>
+        <label class="selected-count" *ngIf="multi && !opened && multiSelectedOptions.length > 0">{{multiSelectedOptions.length}}</label>
+    </div>
+    <div class="custom-dropdown-options" malihu-scrollbar [scrollbarOptions]="scrollbarOptions" *ngIf="opened">
+        <div *ngIf="groupedBy" class="grouped-select {{multi ? 'multi-select': 'single-select'}}">
+            <div *ngFor="let groupedOption of options" class="custom-dropdown-option">
+                <input type="text" class="multi-select-search" 
+                    *ngIf="singleGroupInMultiSelect" value="{{groupedOption.searchText}}" 
+                    (keyup)="searchMultiSelectOptions(groupedOption, $event)"
+                    placeholder="{{ groupedOption.serachPlaceHolder }}"/>
+            
+                <div class="grouped-option-container" *ngIf="groupedOption.keyExist">
+                    <div class="grouped-label"> 
+                        <div *ngIf="multi" class="grouped-label-container">
+                            <div class="checkbox-container">
+                                <mat-checkbox color="primary"
+                                    (change)="multiGroupSelect(groupedOption, $event)"
+                                    [checked]="groupedOption.selectAll">
+                                    {{groupedOption.groupKey}}
+                                </mat-checkbox>
+                            </div>
+                            <mat-icon class="grouped-label-icon" (click)="toggleOpenGroupedOptions(groupedOption)">{{groupedOption.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon>
+                        </div>
+                        <div>
+                            <input type="text" class="multi-select-search" 
+                                *ngIf="groupedOption.opened && !singleGroupInMultiSelect" value="{{groupedOption.searchText}}" 
+                                (keyup)="searchMultiSelectOptions(groupedOption, $event)"
+                                placeholder="{{ groupedOption.serachPlaceHolder }}"/>
+                        </div>
+                        <div *ngIf="!multi" (click)="toggleOpenGroupedOptions(groupedOption)">
+                            {{groupedOption.groupKey}}
+                            <mat-icon class="grouped-label-icon">{{groupedOption.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon>
+                        </div>
+                    </div>
+                    <div class="grouped-child-options-container" *ngIf="groupedOption.opened">
+                        <div *ngFor="let option of groupedOption.options" 
+                            class="custom-dropdown-option grouped-child-option {{ singleSelectedOption != null && singleSelectedOption === option ? 'selected' : ''}}" 
+                            id="{{option[key]}}" (click)="selectOption(option, groupedOption)">
+                            <div *ngIf="!option.hide">
+                                <mat-checkbox
+                                    color="secondary" 
+                                    *ngIf="multi" 
+                                    (change)="multiSelect(option, $event, groupedOption)"
+                                    [checked]="this.multiSelectedOptions != null && this.multiSelectedOptions.includes(option)">{{option[value]}}</mat-checkbox>
+                                <span *ngIf="!multi">{{option[value]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grouped-label" *ngIf="!groupedOption.keyExist">
+                    <div *ngFor="let option of groupedOption.options" 
+                        class="custom-dropdown-option {{ singleSelectedOption != null && singleSelectedOption === option ? 'selected' : ''}}" 
+                        id="{{option[key]}}" (click)="selectOption(option)">
+                        <mat-checkbox 
+                            color="primary" 
+                            *ngIf="multi" 
+                            (change)="multiSelect(option, $event, groupedOption)"
+                            [checked]="this.multiSelectedOptions != null && this.multiSelectedOptions.includes(option)">{{option[value]}}</mat-checkbox>
+                        <span *ngIf="!multi">{{option[value]}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!groupedBy" class="{{multi ? 'multi-select': 'single-select'}}">
+            <div *ngFor="let option of options" 
+                class="custom-dropdown-option {{ singleSelectedOption != null && singleSelectedOption === option ? 'selected' : ''}}" 
+                id="{{option[key]}}" (click)="selectOption(option)">
+                <mat-checkbox 
+                    color="primary" 
+                    *ngIf="multi" 
+                    (change)="multiSelect(option, $event)"
+                    [checked]="this.multiSelectedOptions != null && this.multiSelectedOptions.includes(option)">{{option[value]}}</mat-checkbox>
+                <span *ngIf="!multi">{{option[value]}}</span>
+            </div>
+        </div>
+    </div>
+</div>

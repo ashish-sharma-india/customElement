@@ -1,0 +1,140 @@
+<p>home works!</p>
+<div class="row">
+    <div class="col-sm-2 col-xs-12">
+        <custom-dropdown 
+            label="Dropdown"
+            key="code" 
+            value="name" 
+            [options]="singleSelectOptions" 
+            (change)="selectSingleOption($event)"></custom-dropdown>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2 col-xs-12">
+        <custom-dropdown 
+            multi="true" 
+            label="State"
+            key="code" 
+            value="state"
+            searchPlaceHolder="searchPlaceHolder"
+            [options]="multiSelectOptions"
+            (change)="multiSingleOption($event)"></custom-dropdown>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2 col-xs-12">
+        <custom-dropdown 
+            multi="true"
+            groupKey="type"
+            label="Client"
+            key="code" 
+            value="name"
+            searchPlaceHolder="searchPlaceHolder"
+            [options]="multiSelectGroupedOptions"
+            (change)="multiSingleOption($event)"></custom-dropdown>
+    </div>
+</div>
+
+<div class="row">
+  This is custom select example!
+</div>
+
+
+<div class="row">
+    <div class="col-sm-2 col-xs-12">
+        <custom-select placeHolder="Select a Target" key="code" value="name"
+          searchPlaceHolder="searchPlaceHolder" [options]="inputSelectOption" 
+          (change)="selectSingleOption($event)"></custom-select>
+    </div>
+    <div class="col-sm-3 col-xs-12"></div>
+</div>
+
+<div class="row">
+  This is custom select example!
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <div>
+          <span class="white-tooltip" matTooltipClass="white-tooltip">
+              <span><span class="red-tooltip-text">160.0lb</span> ≥ 156.0lb</span>
+          </span>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+      <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-12 mb-12 pl-12">
+            <div class="col-12 mb-12 pl-12 utility-container">
+              <div class="utility-header col-12 mb-12 pl-12">Charts</div>
+              <div class="utility-content col-12 mb-12 pl-12">
+                <div class="utility-content-block">
+                  <div class="utility-sample-title">Default</div>
+                  <div class="utility-sample-example">
+                    <div class="chart">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart clicked">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart hover">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart opened">
+                      <div class="chart-content">Bio Data</div>
+                      <div class="action-btn">
+                        <mat-icon aria-hidden="false">error_outline</mat-icon>
+                      </div>
+                    </div>
+
+                  </div>
+                  
+                </div>
+
+                <div class="utility-content-block">
+                  <div class="utility-sample-title">Warning</div>
+                  <div class="utility-sample-example">
+                    <div class="chart warning">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart warning clicked">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart warning hover">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart warning opened">
+                      <div class="chart-content">Bio Data</div>
+                      <div class="action-btn">
+                        <mat-icon aria-hidden="false">error_outline</mat-icon>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="utility-content-block">
+                  <div class="utility-sample-title">Danger</div>
+                  <div class="utility-sample-example">
+                    <div class="chart danger">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart danger clicked">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart danger hover">
+                      <div class="chart-content">Bio Data</div>
+                    </div>
+                    <div class="chart danger opened">
+                      <div class="chart-content">Bio Data</div>
+                      <div class="action-btn">
+                        <mat-icon aria-hidden="false">error_outline</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>

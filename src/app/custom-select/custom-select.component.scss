@@ -1,0 +1,92 @@
+.custom-select-container {
+    position: relative;
+    &.opened {
+        .custom-select-placeholder {
+            border-color: #0085CA;
+            border-bottom-width: 0px;
+            .select-lable-text {
+                input.select-input {
+                    font-family: Effra;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 16px;
+                    letter-spacing: 0.5px;
+                    color: #888B8D;
+                    mix-blend-mode: normal;
+                }
+            }
+        }    
+    }
+    .custom-select-placeholder {
+        background: #FCFEFF;
+        /* Input Background */
+
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        position: relative;
+        .select-lable-text {
+            padding: 2px 24px 2px 6px;
+            input.select-input {
+                font-family: Effra;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 23px;
+                letter-spacing: 0.5px;
+                color: rgba(0, 0, 0, 0.6);
+                mix-blend-mode: normal;
+                width: 100%;
+                border-width: 0px;
+                height: 18px;
+                &:focus {
+                    border-width: 0px;
+                    outline: none;
+                }
+            }
+        }
+        .select-label-icon {
+            position: absolute;
+            right: 0px;
+            top: 2px;
+            cursor: pointer;
+            color: #53565A;
+        }
+    }
+    .custom-select-options {
+        position: absolute;
+        top: 28px;
+        background: #FCFEFF;
+        border-width: 0px 1px 1px;
+        border-style: solid;
+        border-color: #0085CA;
+        max-height: 200px;
+        overflow-y: scroll;
+        scrollbar-color: #fff #888B8D;
+        scrollbar-width: thin;
+        cursor: pointer;
+        .custom-select-option {
+            font-family: Effra;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
+            color: #000000;
+            mix-blend-mode: normal;
+            flex: none;
+            order: 0;
+            align-self: flex-start;
+            margin: 0px 0px;
+            padding: 4px 10px;
+        
+            &.selected {
+                background: #E8E8E7;
+            }
+            &:hover {
+                background: #f5f5f5;
+            }
+        }
+    }
+}

@@ -1,0 +1,134 @@
+.custom-dropdown {
+    position: relative;
+    max-width: 100%;
+    &.opened {
+        background: #FCFEFF;
+        .custom-dropdown-label {
+            border-color: #0085CA;
+        }
+    }
+    .custom-dropdown-label {
+        border-color: transparent;
+        border-style: solid;
+        border-width: 1px 1px 0px 1px;
+        box-sizing: border-box;
+        cursor: pointer;
+        padding: 0px 10px 5px;
+        font-family: Effra;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.75px;
+        text-transform: uppercase;
+        color: #004B87;
+        flex: none;
+        order: 0;
+        align-self: center;
+        height: 30px;
+        .label-icon {
+            margin-left: 6px;
+            top: 4px;
+            position: relative;
+        }
+        .selected-count {
+            background-color: #004B87;
+            color: #fff;
+            font-family: Effra;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 10px;
+            // line-height: 20px;
+            align-items: center;
+            text-align: center;
+            padding: 0px 4px;
+            border-radius: 5px;
+        }
+    }
+    .custom-dropdown-options {
+        background: #FCFEFF;
+        border-color: #0085CA;
+        border-style: solid;
+        border-width: 0px 1px 1px 1px;
+        box-sizing: border-box;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        max-height: 200px;
+        overflow-y: scroll;
+        scrollbar-color: #fff #888B8D;
+        scrollbar-width: thin;
+        .single-select {
+            .custom-dropdown-option {
+                padding: 8px 15px;
+                cursor: pointer;
+                font-family: Effra;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 20px;
+                letter-spacing: 0.5px;
+                text-transform: capitalize;
+                color: #000000;
+                mix-blend-mode: normal;
+                &.selected {
+                    background: rgba(0, 0, 0, 0.08) !important;
+                }
+                &:hover {
+                    background: rgba(0, 0, 0, 0.04);
+                }
+            }
+        }
+        .multi-select {
+            padding: 8px 15px;
+        }
+        .grouped-select {
+            .multi-select-search {
+                font-family: Effra;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.25px;
+                color: #888B8D;
+                mix-blend-mode: normal;
+                position: relative;
+                border-width: 0px;
+                left: -9px;
+                top: -5px;
+                &:focus {
+                    border-width: 0px;
+                    outline: none;
+                }
+            }
+            .grouped-option-container {
+                .grouped-label {
+                    .grouped-label-container {
+                        position: relative;
+                        .checkbox-container {
+                            position: relative;
+                            margin-right: 12px;
+                            overflow: hidden;
+                        }
+                        .grouped-label-icon {
+                            position: absolute;
+                            top: -3px;
+                            right: -10px;
+                            cursor: pointer;
+                            z-index: 1;
+                        }
+                    }
+                    .multi-select-search {
+                        top: -8px;
+                        left: 15px;
+                    }
+                }
+                .grouped-child-options-container {
+                    .grouped-child-option {
+                        margin-left: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

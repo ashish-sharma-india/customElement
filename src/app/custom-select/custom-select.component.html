@@ -1,0 +1,19 @@
+<div class="custom-select-container {{opened ? 'opened' : ''}}">
+    <div class="custom-select-placeholder">
+        <div class="select-lable-text">
+            <input type="text" class="select-input" 
+                value="{{ selectedOption != null ? selectedOption[value] : ''}}" 
+                placeholder="{{ placeHolder }}"
+                (keyup)="searchSelectOptions($event)"/>
+        </div>
+        <mat-icon class="select-label-icon">{{opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon>
+    </div>
+    <div class="custom-select-options" malihu-scrollbar [scrollbarOptions]="scrollbarOptions" *ngIf="opened">
+        <div *ngFor="let option of options">
+            <div *ngIf="!option.hide" class="custom-select-option {{ selectedOption != null && selectedOption === option ? 'selected' : ''}}"  
+                id="{{option[key]}}" (click)="selectOption(option)">
+                <span>{{option[value]}}</span>
+            </div>
+        </div>
+    </div>
+</div>
