@@ -8747,3 +8747,23 @@ mat-form-field {
       color: #303066;
   }
 } 
+
+.app-loader {
+  margin: 0 auto;
+}
+
+.page-main-header-title {
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 34px;
+  line-height: 41px;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  mat-icon {
+    color: #0085CA !important;
+  }
+}

@@ -28,7 +28,8 @@ export class CustomDropdownComponent implements OnInit {
   public opened: boolean = false;
   public singleGroupInMultiSelect: boolean = false;
   public scrollbarOptions = { axis: 'y', theme: 'minimal-dark' };
-  
+  public totalOptionsCount: Number = 0;
+
   constructor(private eRef: ElementRef) { }
 
   searchMultiSelectOptions(groupedOption, event): void {
@@ -118,6 +119,7 @@ export class CustomDropdownComponent implements OnInit {
   ngOnInit() {
 
     if(this.options != null && this.options.length > 0) {
+      this.totalOptionsCount = this.options.length;
       if(this.groupKey != null && this.groupKey != '') {
         this.groupedBy = true;
         var groupedOptions = this.options.reduce((result, currentValue) => {

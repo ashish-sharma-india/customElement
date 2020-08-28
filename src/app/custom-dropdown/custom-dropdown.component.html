@@ -1,7 +1,7 @@
 <div class="custom-dropdown {{opened ? 'opened' : ''}}">
     <div class="custom-dropdown-label">
         {{label}}<mat-icon class="label-icon">{{opened ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon>
-        <label class="selected-count" *ngIf="multi && !opened && multiSelectedOptions.length > 0">{{multiSelectedOptions.length}}</label>
+        <label class="selected-count" *ngIf="multi && !opened && multiSelectedOptions.length > 0 && totalOptionsCount != multiSelectedOptions.length">{{multiSelectedOptions.length}}</label>
     </div>
     <div class="custom-dropdown-options" malihu-scrollbar [scrollbarOptions]="scrollbarOptions" *ngIf="opened">
         <div *ngIf="groupedBy" class="grouped-select {{multi ? 'multi-select': 'single-select'}}">

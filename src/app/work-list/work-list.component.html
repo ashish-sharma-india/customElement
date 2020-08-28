@@ -1,0 +1,142 @@
+<div class="body-container work-list">
+    <div class="page-main-header-title">
+        <mat-icon>dns_outline</mat-icon>
+        Work List
+    </div>
+    <mat-spinner 
+        *ngIf="isLoading"
+        class="app-loader"
+        mode="indeterminate"
+        [ngClass]="{ '_mat-animation-noopable': isLoading }"></mat-spinner>
+    <div  *ngIf="!isLoading">
+        <div class="row header-filter">
+            <div class="col-sm-2">
+                <custom-dropdown 
+                    multi="true"
+                    groupKey="type"
+                    label="Client"
+                    key="code" 
+                    value="name"
+                    searchPlaceHolder="searchPlaceHolder"
+                    [options]="clientFilterOptions"></custom-dropdown>
+            </div>
+            <div class="col-sm-2">
+                <custom-dropdown 
+                    multi="true" 
+                    label="State"
+                    key="code" 
+                    value="state"
+                    searchPlaceHolder="searchPlaceHolder"
+                    [options]="stateFilterOptions"></custom-dropdown>
+            </div>
+            <div class="col-sm-2">
+                <custom-dropdown 
+                    multi="true" 
+                    label="Tag"
+                    key="code" 
+                    value="name"
+                    [options]="tagFilterOptions"></custom-dropdown>
+            </div>
+            <div class="col-sm-6">
+                <div class="tag-type-details">
+                    <div class="tag-type tag-admin">
+                        <div class="tag-color"></div>Admin
+                    </div>
+                    <div class="tag-type tag-must_eval">
+                        <div class="tag-color"></div> Must Eval
+                    </div>
+                    <div class="tag-type tag-alert">
+                        <div class="tag-color"></div> Alert
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row header-filter">
+            <div class="col-sm-12" *ngIf="!patientList || patientList.length == 0">
+                No Data Found
+            </div>
+            <div class="col-sm-12" *ngIf="patientList && patientList.length > 0">
+                <mat-accordion>
+                    <mat-expansion-panel class="table-header-container">
+                        <mat-expansion-panel-header class="header-row">
+                            <mat-panel-title>
+                                <div class="row data-header">
+                                    <div class="col-sm-2 col-xs-2 header-text">
+                                        <div class="tag-header">
+                                            <span class="tag-filter">
+                                                Tag <mat-icon>arrow_upward</mat-icon> 
+                                            </span>
+                                            Patient Name
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 col-xs-1 header-text">Task</div>
+                                    <div class="col-sm-2 col-xs-2 header-text">DOB</div>
+                                    <div class="col-sm-1 col-xs-1 header-text">State</div>
+                                    <div class="col-sm-2 col-xs-2 header-text">Client</div>
+                                    <div class="col-sm-2 col-xs-2 header-text">Group</div>
+                                    <div class="col-sm-2 col-xs-2 header-text">Last Transmit</div>
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>        
+                    </mat-expansion-panel>    
+                </mat-accordion>
+                <mat-accordion *ngFor="let patient of patientList">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header class="header-must_eval">
+                            <mat-panel-title>
+                                <div class="row patient-list-accordion-title">
+                                    <div class="col-sm-2 col-xs-2">
+                                        <span class="task-user-name">{{patient.name.last}}, {{patient.name.first}}</span>
+                                    </div>
+                                    <div class="col-sm-1 col-xs-1"><span class="task-count">3 Tasks</span></div>
+                                    <div class="col-sm-2 col-xs-2 table-text">08/03/65</div>
+                                    <div class="col-sm-1 col-xs-1 table-text">{{ patient.address[0].state }}</div>
+                                    <div class="col-sm-2 col-xs-2 table-text">Baylor University</div>
+                                    <div class="col-sm-2 col-xs-2 table-text">Alec's Group</div>
+                                    <div class="col-sm-2 col-xs-2 table-text">16:00 CDT|06/23/20</div>
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+            
+                        <div class="content-container">
+                            <div class="content-block">
+                                <div class="row">
+                                    <div class="col-sm-12 content-block-header"><span class="text">Tasks (4)</span></div>
+                                </div>
+                                <div class="row item-details">
+                                    <div class="col-sm-12 item-header">
+                                        <mat-icon class="header-item-icon">insert_chart_outlined</mat-icon>
+                                        <span class="main-text">Biometric Alert Review</span>
+                                        <span class="sub-text">Due 06/25/20</span>
+                                    </div>
+                                    <div class="col-sm-12 item-header-support">Transmitted 14:36 UTC|0623/20</div>
+                                    <div class="col-sm-12 item-detail">
+                                        <div class="item-content item-must_eval"><b>Weight</b> reported at 160.0lbs, <span class="helighted-text">outside threshold of 159.0</span><span class="content-seperator"></span>9:00UTC <span class="content-seperator"></span> 06/23/20</div>
+                                        <div class="item-content item-must_eval"><b>Blood Pressure</b> reported at 153/72, <span class="helighted-text">outside threshold of 150</span><span class="content-seperator"></span>9:00UTC <span class="content-seperator"></span> 06/23/20</div>
+                                    </div>
+                                </div>
+                                <div class="row item-details">
+                                    <div class="col-sm-12 item-header">
+                                        <mat-icon class="header-item-icon">insert_chart_outlined</mat-icon>
+                                        <span class="main-text">Vitals & Symptoms Check</span>
+                                        <span class="sub-text">Due 06/25/20</span>
+                                    </div>
+                                    <div class="col-sm-12 item-header-support">Transmitted 14:36 UTC|0623/20</div>
+                                    <div class="col-sm-12 item-header">
+
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-sm-12 view-profile-btn-container">
+                                        <button color="info" mat-raised-button>VIEW PROFILE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+        </div>
+    </div>    
+</div>
